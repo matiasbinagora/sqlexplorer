@@ -30,11 +30,39 @@ namespace SqlExplorer.UnitTest
         }
 
         [TestMethod]
-        public void GivenFileName_WhenClassNameWanted_ThenNameExpected()
+        public void GivenFileName_WhenClassNameWantedWithLeftSlash_ThenNameExpected()
         {
             // arrange 
             var fileExplorer = new FileExplorerCommand();
             var file =  @"resources/input.txt";
+
+            // act
+            var result = fileExplorer.GetClassName(file);
+
+            // arrange
+            result.Should().Be("input");
+        }
+
+        [TestMethod]
+        public void GivenFileName_WhenClassNameWantedWithRightSlash_ThenNameExpected()
+        {
+            // arrange 
+            var fileExplorer = new FileExplorerCommand();
+            var file =  @"resources/input.txt";
+
+            // act
+            var result = fileExplorer.GetClassName(file);
+
+            // arrange
+            result.Should().Be("input");
+        }
+
+        [TestMethod]
+        public void GivenFileName_WhenClassNameWantedWithouttSlash_ThenNameExpected()
+        {
+            // arrange 
+            var fileExplorer = new FileExplorerCommand();
+            var file =  @"input.txt";
 
             // act
             var result = fileExplorer.GetClassName(file);
