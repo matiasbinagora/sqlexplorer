@@ -2,6 +2,9 @@
 bin/
 obj/
 
+# coverage.json file
+*/coverage.json
+
 # Logs
 logs
 *.log
