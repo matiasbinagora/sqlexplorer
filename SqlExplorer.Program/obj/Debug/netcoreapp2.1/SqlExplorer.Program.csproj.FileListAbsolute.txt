@@ -1,0 +1,11 @@
+/Users/matiasjacob/Projects/Binagora/sqlexplorer/SqlExplorer.Program/bin/Debug/netcoreapp2.1/SqlExplorer.Program.deps.json
+/Users/matiasjacob/Projects/Binagora/sqlexplorer/SqlExplorer.Program/bin/Debug/netcoreapp2.1/SqlExplorer.Program.runtimeconfig.json
+/Users/matiasjacob/Projects/Binagora/sqlexplorer/SqlExplorer.Program/bin/Debug/netcoreapp2.1/SqlExplorer.Program.runtimeconfig.dev.json
+/Users/matiasjacob/Projects/Binagora/sqlexplorer/SqlExplorer.Program/bin/Debug/netcoreapp2.1/SqlExplorer.Program.dll
+/Users/matiasjacob/Projects/Binagora/sqlexplorer/SqlExplorer.Program/bin/Debug/netcoreapp2.1/SqlExplorer.Program.pdb
+/Users/matiasjacob/Projects/Binagora/sqlexplorer/SqlExplorer.Program/obj/Debug/netcoreapp2.1/SqlExplorer.Program.csproj.CoreCompileInputs.cache
+/Users/matiasjacob/Projects/Binagora/sqlexplorer/SqlExplorer.Program/obj/Debug/netcoreapp2.1/SqlExplorer.Program.AssemblyInfoInputs.cache
+/Users/matiasjacob/Projects/Binagora/sqlexplorer/SqlExplorer.Program/obj/Debug/netcoreapp2.1/SqlExplorer.Program.AssemblyInfo.cs
+/Users/matiasjacob/Projects/Binagora/sqlexplorer/SqlExplorer.Program/obj/Debug/netcoreapp2.1/SqlExplorer.Program.dll
+/Users/matiasjacob/Projects/Binagora/sqlexplorer/SqlExplorer.Program/obj/Debug/netcoreapp2.1/SqlExplorer.Program.pdb
+/Users/matiasjacob/Projects/Binagora/sqlexplorer/SqlExplorer.Program/obj/Debug/netcoreapp2.1/SqlExplorer.Program.csprojAssemblyReference.cache
