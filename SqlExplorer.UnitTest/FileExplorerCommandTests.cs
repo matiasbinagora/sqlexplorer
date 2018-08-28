@@ -2,6 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SqlExplorer.Program;
 using FluentAssertions;
 using System.Linq;
+using System;
 
 namespace SqlExplorer.UnitTest
 {
@@ -9,12 +10,29 @@ namespace SqlExplorer.UnitTest
     [TestClass]
     public class FileExplorerCommandTests
     {
+        private string file;
+        private FileExplorerCommand fileExplorer;
+
+        /// Test initialization method
+        [TestInitialize()]
+        public void Setup()
+        {
+            file =  @"resources/input.txt";
+            fileExplorer = new FileExplorerCommand();
+        }
+
+        // Test cleanup method
+        [TestCleanup()]
+        public void TearDown()
+        {
+            file = String.Empty;
+            fileExplorer = null;
+        }
+
         [TestMethod]
         public void GivenSingleFile_WhenSearch_ThenLinesExpected()
         {
-                // arrange
-            var fileExplorer = new FileExplorerCommand();
-            var file = @"resources/input.txt";
+            // arrange
             var pattern = "Program";
 
                 // act
@@ -31,11 +49,7 @@ namespace SqlExplorer.UnitTest
 
         [TestMethod]
         public void GivenFileName_WhenClassNameWantedWithLeftSlash_ThenNameExpected()
-        {
-            // arrange 
-            var fileExplorer = new FileExplorerCommand();
-            var file =  @"resources/input.txt";
-
+        {           
             // act
             var result = fileExplorer.GetClassName(file);
 
@@ -46,11 +60,8 @@ namespace SqlExplorer.UnitTest
         [TestMethod]
         public void GivenFileName_WhenClassNameWantedWithRightSlash_ThenNameExpected()
         {
-            // arrange 
-            var fileExplorer = new FileExplorerCommand();
-            var file =  @"resources/input.txt";
-
             // act
+            file = @"resources\input.txt";
             var result = fileExplorer.GetClassName(file);
 
             // arrange
@@ -61,8 +72,7 @@ namespace SqlExplorer.UnitTest
         public void GivenFileName_WhenClassNameWantedWithouttSlash_ThenNameExpected()
         {
             // arrange 
-            var fileExplorer = new FileExplorerCommand();
-            var file =  @"input.txt";
+            file =  @"input.txt";
 
             // act
             var result = fileExplorer.GetClassName(file);
