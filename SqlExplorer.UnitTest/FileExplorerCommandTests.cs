@@ -80,5 +80,33 @@ namespace SqlExplorer.UnitTest
             // arrange
             result.Should().Be("input");
         }
+
+        [TestMethod]
+        public void GivenPattern_WhenWordRequiredAndContains_ThenCompleteWordExpected()
+        {
+            // arrange 
+            var pattern = "Program";
+            var line = "using SqlExplorer.Program;";
+
+            // act
+            var result = fileExplorer.GetWordInLine(line, pattern);
+
+            // arrange
+            result.Should().Be("SqlExplorer.Program;");
+        }
+
+        [TestMethod]
+        public void GivenPattern_WhenWordRequiredAndItIsNotPresent_ThenEmptyExpected()
+        {
+            // arrange 
+            var pattern = "something";
+            var line = "using SqlExplorer.Program;";
+
+            // act
+            var result = fileExplorer.GetWordInLine(line, pattern);
+
+            // arrange
+            result.Should().BeEmpty();
+        }
     }
 }
