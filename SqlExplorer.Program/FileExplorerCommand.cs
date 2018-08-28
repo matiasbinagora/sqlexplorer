@@ -30,13 +30,18 @@ namespace SqlExplorer.Program
         // It extracts the complete word between spaces from a pattern
         public string GetWordInLine(string line, string pattern)
         {
-            return "SqlExplorer.Program;";
+            var lineArray = line.Split(' ');
+            for (int i = 0; i < lineArray.Length; i++)
+            {
+                if (lineArray[i].Contains(pattern))
+                    return lineArray[i];
+            }
+            return string.Empty;
         }
 
         // It gets the file name of a complete file
         public string GetClassName(string fileName)
-        {
-            
+        {  
             var dotIndex = fileName.IndexOf('.');
             var slashIndex = fileName.LastIndexOf('/');
             if (slashIndex == -1)
