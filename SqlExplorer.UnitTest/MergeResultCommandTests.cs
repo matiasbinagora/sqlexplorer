@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SqlExplorer.Program.Commands;
+using SqlExplorer.Program.Commands.Models;
 using SqlExplorer.Program.Models;
 using FluentAssertions;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace SqlExplorer.UnitTest
         public void GivenSearchResultInput_WhenMerge_ThenProperResultExpected()
         {
             // arrange
-            var input = new List<SearchResult>(){
+            var searchOutput = new List<SearchResult>(){
                 new SearchResult(){
                     ClassName = "input",
                     LineNumber = "2",
@@ -73,13 +74,16 @@ namespace SqlExplorer.UnitTest
                      }
                 }
             };
-
+            var input = new MergeInput()
+            {
+                Input = searchOutput
+            };
             // act
-            var result = mergeResult.Execute(input);
+            MergeOutput result = mergeResult.Execute(input) as MergeOutput;
 
             // arrange
             result.Should().NotBeNull();
-            result.Should().HaveCount(2);
+            result.Output.Should().HaveCount(2);
             result.Should().BeEquivalentTo(expected);
         }
     }

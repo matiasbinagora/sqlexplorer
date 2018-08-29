@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 
-namespace SqlExplorer.Program.Models
+namespace SqlExplorer.Program.Commands.Models
 {
 
     /// Configuration information definition
-    public class Configuration
+    public class ConfigurationOutput : Output
     {
 
         /// Type of files supported

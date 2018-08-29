@@ -4,31 +4,33 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using SqlExplorer.Program.Models;
+using SqlExplorer.Program.Commands.Models;
 
 namespace SqlExplorer.Program.Commands
 {
     /// File Explorer Command class definition
-    public class FileExplorerCommand
+    public class FileExplorerCommand : ICommand
     {
         // Given a file and a pattern it finds all the ocurrences of this word into this file
-        public IList<SearchResult> Execute(string path, string typeOfFiles, IList<string> patterns)
+        public Output Execute(Input input)
         {
+            FileExplorerInput fileExplorerInput = input as FileExplorerInput;
             var result = new List<SearchResult>();
 
-            bool isDirectory = (File.GetAttributes(path) & FileAttributes.Directory) == FileAttributes.Directory;
+            bool isDirectory = (File.GetAttributes(fileExplorerInput.Path) & FileAttributes.Directory) == FileAttributes.Directory;
             var entries = new List<string>();
 
             if (isDirectory)
-                entries = Directory.GetFileSystemEntries(path, typeOfFiles, SearchOption.AllDirectories).ToList();
+                entries = Directory.GetFileSystemEntries(fileExplorerInput.Path, fileExplorerInput.TypeOfFiles, SearchOption.AllDirectories).ToList();
             else
-                entries.Add(path); // just a file
+                entries.Add(fileExplorerInput.Path); // just a file
 
             foreach (var entry in entries)
             {
-                result.AddRange(SearchWordInFile(entry, patterns));
+                result.AddRange(SearchWordInFile(entry, fileExplorerInput.Patterns));
             }
 
-            return result;
+            return new FileExplorerOutput() { Output = result };
         }
 
         // It extracts the complete word between spaces from a pattern
