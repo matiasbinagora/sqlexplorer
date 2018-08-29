@@ -1,9 +1,11 @@
 using System;
 
-namespace SqlExplorer.Program{
+namespace SqlExplorer.Program.Models
+{
 
     /// Class information definition
-    public class ClassInfo {
+    public class ClassInfo
+    {
 
         /// Line number where the word was found in the class
         public string LineNumber { get; set; }

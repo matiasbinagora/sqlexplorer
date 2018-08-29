@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using SqlExplorer.Program.Models;
 
-namespace SqlExplorer.Program
+namespace SqlExplorer.Program.Commands
 {
     /// Merge Result Command class definition
     public class MergeResultCommand

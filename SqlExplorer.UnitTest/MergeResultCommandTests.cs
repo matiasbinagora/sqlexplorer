@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SqlExplorer.Program;
+using SqlExplorer.Program.Commands;
+using SqlExplorer.Program.Models;
 using FluentAssertions;
 using System.Linq;
 using System;

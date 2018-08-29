@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
 
-namespace SqlExplorer.Program{
+namespace SqlExplorer.Program.Models
+{
 
     /// Merge result class definition
-    public class MergeResult {
+    public class MergeResult
+    {
 
         /// Complete word searched
         public string WordSearched { get; set; }

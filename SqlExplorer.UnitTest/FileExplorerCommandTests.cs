@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SqlExplorer.Program;
+using SqlExplorer.Program.Models;
+using SqlExplorer.Program.Commands;
 using FluentAssertions;
 using System.Linq;
 using System;
@@ -18,7 +19,7 @@ namespace SqlExplorer.UnitTest
         [TestInitialize()]
         public void Setup()
         {
-            file =  @"resources/input.txt";
+            file = @"resources/input.txt";
             fileExplorer = new FileExplorerCommand();
         }
 
@@ -35,12 +36,13 @@ namespace SqlExplorer.UnitTest
         {
             // arrange
             var pattern = "Program";
-            var expected = new SearchResult(){
+            var expected = new SearchResult()
+            {
                 ClassName = "input",
                 LineNumber = "2",
                 WordSearched = "SqlExplorer.Program;"
             };
-                // act
+            // act
             var result = fileExplorer.Execute(file, pattern);
 
             // arrange
@@ -73,7 +75,7 @@ namespace SqlExplorer.UnitTest
                     WordSearched = "Program;"
                 }
             };
-                // act
+            // act
             var result = fileExplorer.Execute(directory, pattern);
 
             // arrange
@@ -84,7 +86,7 @@ namespace SqlExplorer.UnitTest
 
         [TestMethod]
         public void GivenFileName_WhenClassNameWantedWithLeftSlash_ThenNameExpected()
-        {           
+        {
             // act
             var result = fileExplorer.GetClassName(file);
 
@@ -107,7 +109,7 @@ namespace SqlExplorer.UnitTest
         public void GivenFileName_WhenClassNameWantedWithouttSlash_ThenNameExpected()
         {
             // arrange 
-            file =  @"input.txt";
+            file = @"input.txt";
 
             // act
             var result = fileExplorer.GetClassName(file);
