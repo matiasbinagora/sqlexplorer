@@ -1,6 +1,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SqlExplorer.Program.Models;
 using SqlExplorer.Program.Commands;
+using SqlExplorer.Program.Commands.Models;
 using FluentAssertions;
 using System.Linq;
 using System;
@@ -42,13 +43,18 @@ namespace SqlExplorer.UnitTest
                 LineNumber = "2",
                 WordSearched = "SqlExplorer.Program;"
             };
+            var input = new FileExplorerInput()
+            {
+                Path = file,
+                Patterns = pattern
+            };
             // act
-            var result = fileExplorer.Execute(file, string.Empty, pattern);
+            FileExplorerOutput result = fileExplorer.Execute(input) as FileExplorerOutput;
 
             // arrange
             result.Should().NotBeNull();
-            result.Should().HaveCount(1);
-            var item = result.First();
+            result.Output.Should().HaveCount(1);
+            var item = result.Output.First();
             item.Should().BeEquivalentTo(expected);
         }
 
@@ -76,13 +82,19 @@ namespace SqlExplorer.UnitTest
                     WordSearched = "Program;"
                 }
             };
+            var input = new FileExplorerInput()
+            {
+                Path = directory,
+                TypeOfFiles = typeOfFiles,
+                Patterns = pattern
+            };
             // act
-            var result = fileExplorer.Execute(directory, typeOfFiles, pattern);
+            FileExplorerOutput result = fileExplorer.Execute(input) as FileExplorerOutput;
 
             // arrange
             result.Should().NotBeNull();
-            result.Should().HaveCount(3);
-            result.Should().BeEquivalentTo(expected);
+            result.Output.Should().HaveCount(3);
+            result.Output.Should().BeEquivalentTo(expected);
         }
 
         [TestMethod]

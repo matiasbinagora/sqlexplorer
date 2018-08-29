@@ -2,18 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using SqlExplorer.Program.Models;
+using SqlExplorer.Program.Commands.Models;
 
 namespace SqlExplorer.Program.Commands
 {
     /// Merge Result Command class definition
-    public class MergeResultCommand
+    public class MergeResultCommand : ICommand
     {
         // Merges results from search into a single list of one key object
-        public IList<MergeResult> Execute(IList<SearchResult> input)
+        public Output Execute(Input mergeInput)
         {
             var items = new Dictionary<string, IList<SearchResult>>();
             var result = new List<MergeResult>();
-            foreach (var item in input)
+            foreach (var item in (mergeInput as MergeInput).Input)
             {
                 if (!items.ContainsKey(item.WordSearched))
                     items.Add(item.WordSearched, new List<SearchResult>());
@@ -30,7 +31,7 @@ namespace SqlExplorer.Program.Commands
                 }
                 );
             }
-            return result;
+            return new MergeOutput() {  Output = result };
         }
 
         private IList<ClassInfo> GetClassFound(IList<SearchResult> input)
