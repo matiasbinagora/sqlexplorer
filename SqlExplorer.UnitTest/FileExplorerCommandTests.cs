@@ -43,7 +43,7 @@ namespace SqlExplorer.UnitTest
                 WordSearched = "SqlExplorer.Program;"
             };
             // act
-            var result = fileExplorer.Execute(file, pattern);
+            var result = fileExplorer.Execute(file, string.Empty, pattern);
 
             // arrange
             result.Should().NotBeNull();
@@ -58,6 +58,7 @@ namespace SqlExplorer.UnitTest
             // arrange
             var pattern = new List<string>() { "Program" };
             var directory = "resources";
+            var typeOfFiles = "*.txt";
             var expected = new List<SearchResult>(){
                 new SearchResult(){
                     ClassName = "input",
@@ -76,7 +77,7 @@ namespace SqlExplorer.UnitTest
                 }
             };
             // act
-            var result = fileExplorer.Execute(directory, pattern);
+            var result = fileExplorer.Execute(directory, typeOfFiles, pattern);
 
             // arrange
             result.Should().NotBeNull();
