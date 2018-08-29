@@ -51,7 +51,7 @@ namespace SqlExplorer.UnitTest
             // act
             SearchedValues result = fileExplorer.Execute(input) as SearchedValues;
 
-            // arrange
+            // assert
             result.Should().NotBeNull();
             result.Output.Should().HaveCount(1);
             var item = result.Output.First();
@@ -91,7 +91,7 @@ namespace SqlExplorer.UnitTest
             // act
             SearchedValues result = fileExplorer.Execute(input) as SearchedValues;
 
-            // arrange
+            // assert
             result.Should().NotBeNull();
             result.Output.Should().HaveCount(3);
             result.Output.Should().BeEquivalentTo(expected);
@@ -114,7 +114,7 @@ namespace SqlExplorer.UnitTest
             file = @"resources\input.txt";
             var result = fileExplorer.GetClassName(file);
 
-            // arrange
+            // assert
             result.Should().Be("input");
         }
 
@@ -127,7 +127,7 @@ namespace SqlExplorer.UnitTest
             // act
             var result = fileExplorer.GetClassName(file);
 
-            // arrange
+            // assert
             result.Should().Be("input");
         }
 
@@ -141,7 +141,7 @@ namespace SqlExplorer.UnitTest
             // act
             var result = fileExplorer.GetWordInLine(line, pattern);
 
-            // arrange
+            // assert
             result.Should().Be("SqlExplorer.Program;");
         }
 
@@ -155,7 +155,7 @@ namespace SqlExplorer.UnitTest
             // act
             var result = fileExplorer.GetWordInLine(line, pattern);
 
-            // arrange
+            // assert
             result.Should().BeEmpty();
         }
     }

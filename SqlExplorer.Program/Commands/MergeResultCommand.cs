@@ -7,7 +7,7 @@ using SqlExplorer.Program.Commands.Models;
 namespace SqlExplorer.Program.Commands
 {
     /// Merge Result Command class definition
-    public class MergeResultCommand : CommandDto
+    public class MergeResultCommand : ICommand
     {
         // Merges results from search into a single list of one key object
         public CommandDto Execute(CommandDto mergeInput)

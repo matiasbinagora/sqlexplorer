@@ -81,7 +81,7 @@ namespace SqlExplorer.UnitTest
             // act
             SearchedValuesMerged result = mergeResult.Execute(input) as SearchedValuesMerged;
 
-            // arrange
+            // assert
             result.Should().NotBeNull();
             result.Output.Should().HaveCount(2);
             result.Output.Should().BeEquivalentTo(expected);

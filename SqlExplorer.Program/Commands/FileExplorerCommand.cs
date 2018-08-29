@@ -9,7 +9,7 @@ using SqlExplorer.Program.Commands.Models;
 namespace SqlExplorer.Program.Commands
 {
     /// File Explorer Command class definition
-    public class FileExplorerCommand : CommandDto
+    public class FileExplorerCommand : ICommand
     {
         // Given a file and a pattern it finds all the ocurrences of this word into this file
         public CommandDto Execute(CommandDto input)
@@ -21,7 +21,7 @@ namespace SqlExplorer.Program.Commands
             var entries = new List<string>();
 
             if (isDirectory)
-                entries = Directory.GetFileSystemEntries(fileExplorerInput.Path, fileExplorerInput.TypeOfFiles, SearchOption.AllDirectories).ToList();
+                entries = Directory.GetFileSystemEntries(fileExplorerInput.Path, fileExplorerInput.FileType, SearchOption.AllDirectories).ToList();
             else
                 entries.Add(fileExplorerInput.Path); // just a file
 

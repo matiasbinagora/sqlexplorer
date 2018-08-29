@@ -9,7 +9,7 @@ using System.IO;
 namespace SqlExplorer.Program.Commands
 {
     /// Configuration Command class definition
-    public class ConfigurationCommand : CommandDto
+    public class ConfigurationCommand : ICommand
     {
         // Retrieves the program configuration from a json into an .NET object
         public CommandDto Execute(CommandDto input)
