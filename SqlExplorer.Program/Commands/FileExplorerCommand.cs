@@ -3,8 +3,9 @@ using System.IO;
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
+using SqlExplorer.Program.Models;
 
-namespace SqlExplorer.Program
+namespace SqlExplorer.Program.Commands
 {
     /// File Explorer Command class definition
     public class FileExplorerCommand
@@ -13,18 +14,18 @@ namespace SqlExplorer.Program
         public IList<SearchResult> Execute(string path, string pattern)
         {
             var result = new List<SearchResult>();
-            
+
             bool isDirectory = (File.GetAttributes(path) & FileAttributes.Directory) == FileAttributes.Directory;
             var entries = new List<string>();
 
             if (isDirectory)
                 entries = Directory.GetFileSystemEntries(path, "*", SearchOption.AllDirectories).ToList();
-            else 
+            else
                 entries.Add(path); // just a file
 
             foreach (var entry in entries)
             {
-                result.AddRange(SearchWordInFile(entry,pattern));
+                result.AddRange(SearchWordInFile(entry, pattern));
             }
 
             return result;
@@ -44,7 +45,7 @@ namespace SqlExplorer.Program
 
         // It gets the file name of a complete file
         public string GetClassName(string fileName)
-        {  
+        {
             var dotIndex = fileName.IndexOf('.');
             var slashIndex = fileName.LastIndexOf('/');
             if (slashIndex == -1)
@@ -62,8 +63,10 @@ namespace SqlExplorer.Program
             foreach (var line in File.ReadAllLines(file))
             {
                 lineNumber++;
-                if (line.Contains(pattern)) {
-                    result.Add(new SearchResult() {
+                if (line.Contains(pattern))
+                {
+                    result.Add(new SearchResult()
+                    {
                         ClassName = GetClassName(file),
                         LineNumber = lineNumber.ToString(),
                         WordSearched = GetWordInLine(line, pattern)
