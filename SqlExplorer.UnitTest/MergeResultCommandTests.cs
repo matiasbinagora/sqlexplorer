@@ -12,7 +12,6 @@ namespace SqlExplorer.UnitTest
     [TestClass]
     public class MergeResultCommandTests
     {
-        private string file;
         private MergeResultCommand mergeResult;
 
         /// Test initialization method
