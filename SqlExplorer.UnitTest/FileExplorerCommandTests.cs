@@ -35,7 +35,7 @@ namespace SqlExplorer.UnitTest
         public void GivenSingleFile_WhenSearch_ThenLinesExpected()
         {
             // arrange
-            var pattern = "Program";
+            var pattern = new List<string>() { "Program" };
             var expected = new SearchResult()
             {
                 ClassName = "input",
@@ -56,7 +56,7 @@ namespace SqlExplorer.UnitTest
         public void GivenDirectory_WhenSearch_ThenLinesExpected()
         {
             // arrange
-            var pattern = "Program";
+            var pattern = new List<string>() { "Program" };
             var directory = "resources";
             var expected = new List<SearchResult>(){
                 new SearchResult(){

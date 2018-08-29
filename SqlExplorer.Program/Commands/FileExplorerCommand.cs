@@ -11,7 +11,7 @@ namespace SqlExplorer.Program.Commands
     public class FileExplorerCommand
     {
         // Given a file and a pattern it finds all the ocurrences of this word into this file
-        public IList<SearchResult> Execute(string path, string pattern)
+        public IList<SearchResult> Execute(string path, IList<string> patterns)
         {
             var result = new List<SearchResult>();
 
@@ -25,7 +25,7 @@ namespace SqlExplorer.Program.Commands
 
             foreach (var entry in entries)
             {
-                result.AddRange(SearchWordInFile(entry, pattern));
+                result.AddRange(SearchWordInFile(entry, patterns));
             }
 
             return result;
@@ -56,21 +56,25 @@ namespace SqlExplorer.Program.Commands
             return fileName.Substring(slashIndex, dotIndex - slashIndex);
         }
 
-        private IList<SearchResult> SearchWordInFile(string file, string pattern)
+        private IList<SearchResult> SearchWordInFile(string file, IList<string> patterns)
         {
             var lineNumber = 0;
             var result = new List<SearchResult>();
-            foreach (var line in File.ReadAllLines(file))
+            var lines = File.ReadAllLines(file);
+            foreach (var pattern in patterns)
             {
-                lineNumber++;
-                if (line.Contains(pattern))
+                foreach (var line in lines)
                 {
-                    result.Add(new SearchResult()
+                    lineNumber++;
+                    if (line.Contains(pattern))
                     {
-                        ClassName = GetClassName(file),
-                        LineNumber = lineNumber.ToString(),
-                        WordSearched = GetWordInLine(line, pattern)
-                    });
+                        result.Add(new SearchResult()
+                        {
+                            ClassName = GetClassName(file),
+                            LineNumber = lineNumber.ToString(),
+                            WordSearched = GetWordInLine(line, pattern)
+                        });
+                    }
                 }
             }
             return result;
