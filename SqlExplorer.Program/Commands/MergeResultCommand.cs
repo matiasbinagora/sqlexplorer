@@ -8,7 +8,7 @@ namespace SqlExplorer.Program.Commands
     /// Merge Result Command class definition
     public class MergeResultCommand
     {
-        // Given a file and a pattern it finds all the ocurrences of this word into this file
+        // Merges results from search into a single list of one key object
         public IList<MergeResult> Execute(IList<SearchResult> input)
         {
             var items = new Dictionary<string, IList<SearchResult>>();
