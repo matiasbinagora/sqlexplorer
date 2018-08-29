@@ -6,7 +6,7 @@ namespace SqlExplorer.Program.Commands.Models
 {
 
     /// Merge Output information definition
-    public class MergeOutput : Output
+    public class SearchedValuesMerged : CommandDto
     {
 
         /// Merge result output list

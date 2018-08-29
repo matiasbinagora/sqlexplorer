@@ -9,13 +9,15 @@ using System.IO;
 namespace SqlExplorer.Program.Commands
 {
     /// Configuration Command class definition
-    public class ConfigurationCommand : ICommand
+    public class ConfigurationCommand : CommandDto
     {
         // Retrieves the program configuration from a json into an .NET object
-        public Output Execute(Input input)
+        public CommandDto Execute(CommandDto input)
         {
-            var content = File.ReadAllText((input as ConfigurationInput).Path);
-            return JsonConvert.DeserializeObject<ConfigurationOutput>(content);
+            var content = File.ReadAllText((input as ConfigurationInput).ConfigFilePath);
+            var result = JsonConvert.DeserializeObject<ValuesForSearch>(content);
+            result.Path = (input as ConfigurationInput).PathForSearch;
+            return result;
         }
     }
 }

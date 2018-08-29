@@ -6,6 +6,6 @@ namespace SqlExplorer.Program.Commands
     // Command interface definition
     public interface ICommand
     {
-        Output Execute(Input input);
+        CommandDto Execute(CommandDto input);
     }
 }

@@ -43,13 +43,13 @@ namespace SqlExplorer.UnitTest
                 LineNumber = "2",
                 WordSearched = "SqlExplorer.Program;"
             };
-            var input = new FileExplorerInput()
+            var input = new ValuesForSearch()
             {
                 Path = file,
                 Patterns = pattern
             };
             // act
-            FileExplorerOutput result = fileExplorer.Execute(input) as FileExplorerOutput;
+            SearchedValues result = fileExplorer.Execute(input) as SearchedValues;
 
             // arrange
             result.Should().NotBeNull();
@@ -82,14 +82,14 @@ namespace SqlExplorer.UnitTest
                     WordSearched = "Program;"
                 }
             };
-            var input = new FileExplorerInput()
+            var input = new ValuesForSearch()
             {
                 Path = directory,
-                TypeOfFiles = typeOfFiles,
+                FileType = typeOfFiles,
                 Patterns = pattern
             };
             // act
-            FileExplorerOutput result = fileExplorer.Execute(input) as FileExplorerOutput;
+            SearchedValues result = fileExplorer.Execute(input) as SearchedValues;
 
             // arrange
             result.Should().NotBeNull();

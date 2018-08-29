@@ -9,12 +9,12 @@ using SqlExplorer.Program.Commands.Models;
 namespace SqlExplorer.Program.Commands
 {
     /// File Explorer Command class definition
-    public class FileExplorerCommand : ICommand
+    public class FileExplorerCommand : CommandDto
     {
         // Given a file and a pattern it finds all the ocurrences of this word into this file
-        public Output Execute(Input input)
+        public CommandDto Execute(CommandDto input)
         {
-            FileExplorerInput fileExplorerInput = input as FileExplorerInput;
+            ValuesForSearch fileExplorerInput = input as ValuesForSearch;
             var result = new List<SearchResult>();
 
             bool isDirectory = (File.GetAttributes(fileExplorerInput.Path) & FileAttributes.Directory) == FileAttributes.Directory;
@@ -30,7 +30,7 @@ namespace SqlExplorer.Program.Commands
                 result.AddRange(SearchWordInFile(entry, fileExplorerInput.Patterns));
             }
 
-            return new FileExplorerOutput() { Output = result };
+            return new SearchedValues() { Output = result };
         }
 
         // It extracts the complete word between spaces from a pattern

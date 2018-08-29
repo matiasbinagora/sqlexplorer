@@ -6,7 +6,7 @@ namespace SqlExplorer.Program.Commands.Models
 {
 
     /// File Explorer Output information definition
-    public class FileExplorerOutput : Output
+    public class SearchedValues : CommandDto
     {
 
         /// Search result output list

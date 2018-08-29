@@ -74,12 +74,12 @@ namespace SqlExplorer.UnitTest
                      }
                 }
             };
-            var input = new MergeInput()
+            var input = new SearchedValues()
             {
-                Input = searchOutput
+                Output = searchOutput
             };
             // act
-            MergeOutput result = mergeResult.Execute(input) as MergeOutput;
+            SearchedValuesMerged result = mergeResult.Execute(input) as SearchedValuesMerged;
 
             // arrange
             result.Should().NotBeNull();

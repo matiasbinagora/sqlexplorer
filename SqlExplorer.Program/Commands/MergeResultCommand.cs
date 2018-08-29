@@ -7,14 +7,14 @@ using SqlExplorer.Program.Commands.Models;
 namespace SqlExplorer.Program.Commands
 {
     /// Merge Result Command class definition
-    public class MergeResultCommand : ICommand
+    public class MergeResultCommand : CommandDto
     {
         // Merges results from search into a single list of one key object
-        public Output Execute(Input mergeInput)
+        public CommandDto Execute(CommandDto mergeInput)
         {
             var items = new Dictionary<string, IList<SearchResult>>();
             var result = new List<MergeResult>();
-            foreach (var item in (mergeInput as MergeInput).Input)
+            foreach (var item in (mergeInput as SearchedValues).Output)
             {
                 if (!items.ContainsKey(item.WordSearched))
                     items.Add(item.WordSearched, new List<SearchResult>());
@@ -31,7 +31,7 @@ namespace SqlExplorer.Program.Commands
                 }
                 );
             }
-            return new MergeOutput() {  Output = result };
+            return new SearchedValuesMerged() {  Output = result };
         }
 
         private IList<ClassInfo> GetClassFound(IList<SearchResult> input)

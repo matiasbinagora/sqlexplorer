@@ -34,14 +34,16 @@ namespace SqlExplorer.UnitTest
         {
             // arrange
             var file = @"resources/config.json";
-            var expected =  new ConfigurationOutput()
+            var expected =  new ValuesForSearch()
             {
                 FileType = "*.txt",
-                Patterns = new List<string>() {"1", "2"}
+                Patterns = new List<string>() {"1", "2"},
+                Path = "some/path/here"
             };
             // act
             var result = configuration.Execute(new ConfigurationInput() {
-                Path = file
+                ConfigFilePath = file,
+                PathForSearch = "some/path/here"
             });
 
             // arrange
