@@ -84,7 +84,7 @@ namespace SqlExplorer.UnitTest
             // arrange
             result.Should().NotBeNull();
             result.Output.Should().HaveCount(2);
-            result.Should().BeEquivalentTo(expected);
+            result.Output.Should().BeEquivalentTo(expected);
         }
     }
 }

@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SqlExplorer.Program.Commands;
+using SqlExplorer.Program.Commands.Models;
 using SqlExplorer.Program.Models;
 using FluentAssertions;
 using System.Linq;
@@ -33,13 +34,15 @@ namespace SqlExplorer.UnitTest
         {
             // arrange
             var file = @"resources/config.json";
-            var expected =  new Configuration()
+            var expected =  new ConfigurationOutput()
             {
                 FileType = "*.txt",
                 Patterns = new List<string>() {"1", "2"}
             };
             // act
-            var result = configuration.Execute(file);
+            var result = configuration.Execute(new ConfigurationInput() {
+                Path = file
+            });
 
             // arrange
             result.Should().NotBeNull();
