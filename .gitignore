@@ -1,3 +1,11 @@
+# bin & obj folders
+bin/
+obj/
+
+# coverage.json file
+*/coverage.json
+*/lcov.info
+
 # Logs
 logs
 *.log
