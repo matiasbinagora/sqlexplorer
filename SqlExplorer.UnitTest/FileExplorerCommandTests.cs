@@ -3,6 +3,7 @@ using SqlExplorer.Program;
 using FluentAssertions;
 using System.Linq;
 using System;
+using System.Collections.Generic;
 
 namespace SqlExplorer.UnitTest
 {
@@ -34,7 +35,11 @@ namespace SqlExplorer.UnitTest
         {
             // arrange
             var pattern = "Program";
-
+            var expected = new SearchResult(){
+                ClassName = "input",
+                LineNumber = "2",
+                WordSearched = "SqlExplorer.Program;"
+            };
                 // act
             var result = fileExplorer.Execute(file, pattern);
 
@@ -42,9 +47,39 @@ namespace SqlExplorer.UnitTest
             result.Should().NotBeNull();
             result.Should().HaveCount(1);
             var item = result.First();
-            item.ClassName.Should().Be("input");
-            item.LineNumber.Should().Be("2");
-            item.WordSearched.Should().Be("SqlExplorer.Program;");
+            item.Should().BeEquivalentTo(expected);
+        }
+
+        [TestMethod]
+        public void GivenDirectory_WhenSearch_ThenLinesExpected()
+        {
+            // arrange
+            var pattern = "Program";
+            var directory = "resources";
+            var expected = new List<SearchResult>(){
+                new SearchResult(){
+                    ClassName = "input",
+                    LineNumber = "2",
+                    WordSearched = "SqlExplorer.Program;"
+                },
+                new SearchResult(){
+                    ClassName = "anotherinput",
+                    LineNumber = "7",
+                    WordSearched = "SqlExplorer.Program"
+                },
+                new SearchResult(){
+                    ClassName = "anotherinput",
+                    LineNumber = "64",
+                    WordSearched = "Program;"
+                }
+            };
+                // act
+            var result = fileExplorer.Execute(directory, pattern);
+
+            // arrange
+            result.Should().NotBeNull();
+            result.Should().HaveCount(3);
+            result.Should().BeEquivalentTo(expected);
         }
 
         [TestMethod]

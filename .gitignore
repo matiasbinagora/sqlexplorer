@@ -4,6 +4,7 @@ obj/
 
 # coverage.json file
 */coverage.json
+*/lcov.info
 
 # Logs
 logs
