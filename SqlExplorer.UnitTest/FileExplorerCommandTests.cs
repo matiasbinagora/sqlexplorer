@@ -41,7 +41,8 @@ namespace SqlExplorer.UnitTest
             {
                 ClassName = "input",
                 LineNumber = "2",
-                WordSearched = "SqlExplorer.Program;"
+                WordSearched = "SqlExplorer.Program;",
+                FilePath = "resources/input.txt"
             };
             var input = new ValuesForSearch()
             {
@@ -69,17 +70,20 @@ namespace SqlExplorer.UnitTest
                 new SearchResult(){
                     ClassName = "input",
                     LineNumber = "2",
-                    WordSearched = "SqlExplorer.Program;"
+                    WordSearched = "SqlExplorer.Program;",
+                    FilePath = "resources/input.txt"
                 },
                 new SearchResult(){
                     ClassName = "anotherinput",
                     LineNumber = "7",
-                    WordSearched = "SqlExplorer.Program"
+                    WordSearched = "SqlExplorer.Program",
+                    FilePath = "resources/anotherinput.txt"
                 },
                 new SearchResult(){
                     ClassName = "anotherinput",
                     LineNumber = "64",
-                    WordSearched = "Program;"
+                    WordSearched = "Program;",
+                    FilePath = "resources/anotherinput.txt"
                 }
             };
             var input = new ValuesForSearch()

@@ -73,6 +73,7 @@ namespace SqlExplorer.Program.Commands
                         result.Add(new SearchResult()
                         {
                             ClassName = GetClassName(file),
+                            FilePath = file,
                             LineNumber = lineNumber.ToString(),
                             WordSearched = GetWordInLine(line, pattern)
                         });

@@ -42,7 +42,8 @@ namespace SqlExplorer.UnitTest
                      Found = new List<ClassInfo>(){
                          new ClassInfo() {
                              ClassName = "anotherinput",
-                            LineNumber = "7"
+                            LineNumber = "7",
+                            FilePath = "resources/anotherinput.txt"
                          }
                      },
                      WordSearched = "SqlExplorer.Program",
@@ -51,7 +52,8 @@ namespace SqlExplorer.UnitTest
                      Found = new List<ClassInfo>(){
                          new ClassInfo() {
                              ClassName = "anotherinput",
-                            LineNumber = "64"
+                            LineNumber = "64",
+                            FilePath = "resources/anotherinput.txt"
                          }
                      },
                      WordSearched = "Program;",
@@ -60,7 +62,8 @@ namespace SqlExplorer.UnitTest
                     Found =  new List<ClassInfo>() {
                          new ClassInfo(){
                              ClassName = "input",
-                            LineNumber = "2"
+                            LineNumber = "2",
+                            FilePath = "resources/input.txt"
                          }
                      },
                      WordSearched = "SqlExplorer.Program;",

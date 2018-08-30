@@ -15,5 +15,8 @@ namespace SqlExplorer.Program.Models
 
         /// Class (File) name where the word was found
         public string ClassName { get; set; }
+
+        /// File Path where the word was found
+        public string FilePath { get; set; }
     }
 }

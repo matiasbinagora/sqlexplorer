@@ -43,7 +43,8 @@ namespace SqlExplorer.Program.Commands
                 result.Add(new ClassInfo()
                 {
                     LineNumber = item.LineNumber,
-                    ClassName = item.ClassName
+                    ClassName = item.ClassName,
+                    FilePath = item.FilePath
                 });
             }
 
