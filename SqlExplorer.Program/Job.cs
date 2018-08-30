@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using SqlExplorer.Program.Commands;
 using SqlExplorer.Program.Commands.Models;
 using Newtonsoft.Json;
+using System.IO;
 
 namespace SqlExplorer.Program
 {
@@ -23,7 +24,9 @@ namespace SqlExplorer.Program
                 Console.WriteLine("arg: " +  args[0]);
                 Console.WriteLine("arg: " +  args[1]);
                 var result = program.Run(args[0], args[1]);
-                Console.WriteLine(JsonConvert.SerializeObject(result));
+                File.WriteAllText("output.txt",JsonConvert.SerializeObject(result));
+                Console.WriteLine("output.txt file created");
+                Console.WriteLine("Go to https://www.csvjson.com/json2csv to CSV format");
             }
         }
 
