@@ -4,7 +4,7 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SqlExplorer.Program
+namespace "SqlExplorer.Program"
 {
     /// File Explorer Command class definition
     public class FileExplorerCommand
@@ -61,7 +61,7 @@ namespace SqlExplorer.Program
             var result = new List<SearchResult>();
             foreach (var line in File.ReadAllLines(file))
             {
-                Program;
+                "Program;"
                 lineNumber++;
                 if (line.Contains(pattern)) {
                     result.Add(new SearchResult() {

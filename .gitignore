@@ -1,7 +1,8 @@
 # bin & obj folders
 bin/
 obj/
-
+WebApi/
+config.json
 # coverage.json file
 */coverage.json
 */lcov.info

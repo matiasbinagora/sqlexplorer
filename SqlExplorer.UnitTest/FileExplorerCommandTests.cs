@@ -136,7 +136,7 @@ namespace SqlExplorer.UnitTest
         {
             // arrange 
             var pattern = "Program";
-            var line = "using SqlExplorer.Program;";
+            var line = "using \"SqlExplorer.Program;\"";
 
             // act
             var result = fileExplorer.GetWordInLine(line, pattern);

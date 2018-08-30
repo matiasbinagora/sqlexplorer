@@ -16,8 +16,15 @@ namespace SqlExplorer.Program
         {
             var program = new Job();
             program.commands = program.SetupCommands();
-            var result = program.Run(args[0], args[1]);
-            Console.WriteLine(JsonConvert.SerializeObject(result));
+            if (args.Length < 2)
+            { Console.WriteLine("Expected 2 args"); }
+            else
+            {
+                Console.WriteLine("arg: " +  args[0]);
+                Console.WriteLine("arg: " +  args[1]);
+                var result = program.Run(args[0], args[1]);
+                Console.WriteLine(JsonConvert.SerializeObject(result));
+            }
         }
 
         // Setups a list of commands to be executed

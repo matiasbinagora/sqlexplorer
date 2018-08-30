@@ -36,7 +36,7 @@ namespace SqlExplorer.Program.Commands
         // It extracts the complete word between spaces from a pattern
         public string GetWordInLine(string line, string pattern)
         {
-            var lineArray = line.Split(' ');
+            var lineArray = line.Split('"');
             for (int i = 0; i < lineArray.Length; i++)
             {
                 if (lineArray[i].Contains(pattern))
@@ -48,7 +48,7 @@ namespace SqlExplorer.Program.Commands
         // It gets the file name of a complete file
         public string GetClassName(string fileName)
         {
-            var dotIndex = fileName.IndexOf('.');
+            var dotIndex = fileName.LastIndexOf('.');
             var slashIndex = fileName.LastIndexOf('/');
             if (slashIndex == -1)
             {
